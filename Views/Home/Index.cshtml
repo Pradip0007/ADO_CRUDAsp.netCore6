@@ -1,0 +1,47 @@
+﻿@model List<ADO_CRUD.Models.Employees>
+
+@{
+    ViewData["Title"] = "Employees List";
+}
+
+<h2>Employees List</h2>
+
+<!-- Create New Button -->
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Designation</th>
+            <th>City</th>
+            <th>Actions</th> <!-- Added Actions column for buttons -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Age</td>
+                <td>@emp.Designation</td>
+                <td>@emp.City</td>
+                <td>
+                    <!-- Edit Button -->
+                    <a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-warning">Edit</a>
+                    <!-- Details Button -->
+                    <a asp-action="Details" asp-route-id="@emp.Id" class="btn btn-info">Details</a>
+                    <!-- Delete Button -->
+                    <a asp-action="Delete" asp-route-id="@emp.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
